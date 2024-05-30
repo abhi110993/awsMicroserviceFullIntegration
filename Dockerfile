@@ -2,7 +2,7 @@ FROM maven:3.8-jdk-11 AS build
 WORKDIR /project
 COPY . /project
 RUN mvn clean package
-FROM openjdk:17
+FROM openjdk:11-jre-slim
 WORKDIR /app
 COPY --from=build /project/target/awsInteg-0.0.1-SNAPSHOT.jar ./
 
