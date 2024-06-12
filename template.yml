@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Template for deployment of application on AWS"
+
+Parameters:
+  pRepositoryName:
+    Type: String
+    Default: "aws-integ-factorial-repo"
+
+  pMatchCount:
+    Type: Number
+    Default: 5
+
+  pServiceExecutionIamRole:
+    Type: String
+    Default: "compstien-deploy-role"
+
+Resources:
+  FactorialECRRepo:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: !Ref pRepositoryName
+      ImageTagMutability: IMMUTABLE
+      LifecyclePolicy:
+        LifecyclePolicyText: !Sub
+          '{
+            "rules": [
+            {
+              "rulePriority": 1,
+              "description": "Only keep ${pMatchCount} images",
+              "selection": {
+                "tagStatus": "any",
+                "countType": "imageCountMoreThan",
+                "countNumber": ${pMatchCount}
+              },
+              "action": { "type": "expire" }
+            }]
+          }'
+
+      RepositoryPolicyText:
+        Version: "2012-10-17"
+        Statement:
+          -
+            Sid: AllowPushPull
+            Effect: Allow
+            Principal:
+              AWS: !Sub "arn:aws:iam::${AWS::AccountId}:role/${pServiceExecutionIamRole}"
+            Action:
+              - "ecr:GetDownloadUrlForLayer"
+              - "ecr:BatchGetImage"
+              - "ecr:BatchCheckLayerAvailability"
+              - "ecr:PutImage"
+              - "ecr:InitiateLayerUpload"
+              - "ecr:UploadLayerPart"
+              - "ecr:CompleteLayerUpload"
