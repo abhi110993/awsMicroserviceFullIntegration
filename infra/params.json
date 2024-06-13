@@ -10,5 +10,9 @@
   {
     "ParameterKey": "pServiceExecutionIamRole",
     "ParameterValue": "compstien-deploy-role"
+  },
+  {
+    "ParameterKey": "pEcsCluster",
+    "ParameterValue": "aws-integ-ecs-cluster-factorial"
   }
 ]

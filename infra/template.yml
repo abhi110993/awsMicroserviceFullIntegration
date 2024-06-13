@@ -11,7 +11,23 @@ Parameters:
   pServiceExecutionIamRole:
     Type: String
 
+  pEcsCluster:
+    Type: String
+
 Resources:
+  FactorialECS:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Ref pEcsCluster
+      CapacityProviders:
+        - FARGATE
+        - FARGATE_SPOT
+      Configuration:
+        ExecuteCommandConfiguration:
+          Logging: DEFAULT
+      ServiceConnectDefaults:
+        Namespace: !Ref pEcsCluster
+
   FactorialECRRepo:
     Type: AWS::ECR::Repository
     Properties:
