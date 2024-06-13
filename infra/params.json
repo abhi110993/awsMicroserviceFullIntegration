@@ -5,6 +5,10 @@
   },
   {
     "ParameterKey": "pMatchCount",
+    "ParameterValue": 5
+  },
+  {
+    "ParameterKey": "pServiceExecutionIamRole",
     "ParameterValue": "compstien-deploy-role"
   }
 ]
