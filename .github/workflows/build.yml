@@ -29,11 +29,18 @@ jobs:
         id: get-timestamp
         run: echo "::set-output name=timestamp::$(date +'%Y-%m-%d-%H-%M')"
 
+      - name: Build infrastructure
+        id: build-image
+        env:
+          PARAMETER: file:////infra/params.json
+        run: |
+          aws cloudformation create-stack --stack-name aws-full-integ-factorial-cf-stack --template-body file://./infra/template.yml
+
       - name: Build, tag, and push the image to Amazon ECR
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: aws-integ-factorial-repo
+          ECR_REPOSITORY: aws-integ-ecr-factorial
           IMAGE_TAG: aws-integ-factorial-image-${{ steps.get-timestamp.outputs.timestamp }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .

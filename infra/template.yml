@@ -4,7 +4,7 @@ Description: "Template for deployment of application on AWS"
 Parameters:
   pRepositoryName:
     Type: String
-    Default: "aws-integ-factorial-repo"
+    Default: "aws-integ-ecr-factorial"
 
   pMatchCount:
     Type: Number
