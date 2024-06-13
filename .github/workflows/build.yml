@@ -37,7 +37,7 @@ jobs:
           aws cloudformation create-stack --stack-name aws-full-integ-factorial-cf-stack --template-body file://./infra/template.yml
 
       - name: Build, tag, and push the image to Amazon ECR
-        id: build-image
+        id: build-infra
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: aws-integ-ecr-factorial
