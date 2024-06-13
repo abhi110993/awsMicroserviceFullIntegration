@@ -5,7 +5,7 @@
   },
   {
     "ParameterKey": "pMatchCount",
-    "ParameterValue": 5
+    "ParameterValue": "5"
   },
   {
     "ParameterKey": "pServiceExecutionIamRole",
