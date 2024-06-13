@@ -1,8 +1,10 @@
 [
   {
-    "ParameterKey": "abc",
-    "ParameterValue": "whatever"
+    "ParameterKey": "pRepositoryName",
+    "ParameterValue": "aws-integ-ecr-factorial"
+  },
+  {
+    "ParameterKey": "pMatchCount",
+    "ParameterValue": "compstien-deploy-role"
   }
-
-
 ]
