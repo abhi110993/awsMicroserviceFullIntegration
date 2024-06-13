@@ -31,10 +31,8 @@ jobs:
 
       - name: Build infrastructure
         id: build-image
-        env:
-          PARAMETER: file:////infra/params.json
         run: |
-          aws cloudformation create-stack --stack-name aws-full-integ-factorial-stack --template-body file://./infra/template.yml --parameters file://./infra/params.json
+          aws cloudformation update-stack --stack-name aws-full-integ-factorial-stack --template-body file://./infra/template.yml --parameters file://./infra/params.json
 
       - name: Build, tag, and push the image to Amazon ECR
         id: build-infra
