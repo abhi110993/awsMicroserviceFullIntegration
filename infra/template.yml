@@ -44,7 +44,6 @@ Resources:
                 awslogs-create-group: true
           Cpu: 512
           Memory: 512
-          Family: !Ref pTaskDefFamily
           NetworkMode: awsvpc
           RequiresCompatibilities:
             - FARGATE
