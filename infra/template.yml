@@ -44,9 +44,6 @@ Resources:
                 awslogs-create-group: true
           Cpu: 512
           Memory: 512
-          NetworkMode: awsvpc
-          RequiresCompatibilities:
-            - FARGATE
 
   FactorialECS:
     Type: AWS::ECS::Cluster
