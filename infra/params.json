@@ -14,5 +14,17 @@
   {
     "ParameterKey": "pEcsCluster",
     "ParameterValue": "aws-integ-ecs-cluster-factorial"
+  },
+  {
+    "ParameterKey": "pTaskDefinition",
+    "ParameterValue": "aws-integ-task-def-factorial"
+  },
+  {
+    "ParameterKey": "pHostContainerPort",
+    "ParameterValue": "8090"
+  },
+  {
+    "ParameterKey": "pTaskDefFamily",
+    "ParameterValue": "task-def-family"
   }
 ]
