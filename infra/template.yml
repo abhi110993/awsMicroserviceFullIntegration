@@ -48,7 +48,6 @@ Resources:
           NetworkMode: awsvpc
           RequiresCompatibilities:
             - FARGATE
-          TaskRoleArn: !Sub "arn:aws:iam::${AWS::AccountId}:role/${pServiceExecutionIamRole}"
 
   FactorialECS:
     Type: AWS::ECS::Cluster
